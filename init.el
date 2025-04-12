@@ -2,6 +2,7 @@
 
 ;;; Packages.
 (require 'package)
+
 (setq package-archives
       '(("GNU ELPA"     . "https://elpa.gnu.org/packages/")
 	("MELPA"        . "https://melpa.org/packages/")
@@ -14,10 +15,13 @@
         ("ORG"          . 10)
         ("MELPA Stable" . 5)
         ("nongnu"       . 0)))
+
 (package-initialize)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
 (require 'use-package)
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
@@ -29,21 +33,25 @@
 
 ;;; Set some values.
 
+;; Don't know what this is.
 (org-babel-do-load-languages 'org-babel-load-languages
 			     '((eshell . t) (python . t)))
 
-
+;; Dired settings.
 (setq dired-free-space nil)
 (defun my-dired-init () (dired-hide-details-mode 1))
 (add-hook 'dired-mode-hook 'my-dired-init)
 (setq initial-buffer-choice "~/Documents/")
 
+;; Frame size.
 (push '(tool-bar-lines . 0) default-frame-alist)
-(push '(height . 48) default-frame-alist)
-(push '(width . 84) default-frame-alist)
+(push '(height . 48)        default-frame-alist)
+(push '(width . 84)         default-frame-alist)
 
+;; Show columns in mode line.
 (column-number-mode t)
 
+;; Set everything to UTF-8.
 (set-language-environment    "UTF-8")
 (setq locale-coding-system   'utf-8)
 (prefer-coding-system        'utf-8)
@@ -52,91 +60,33 @@
 (set-keyboard-coding-system  'utf-8)
 (set-selection-coding-system 'utf-8)
 
-(dolist (mode
-         '(tool-bar-mode
-           blink-cursor-mode))
-  (funcall mode 0))
+;; LaTeX settings.
+(add-hook 'LaTeX-mode-hook (lambda ()
+			   (add-to-list 'prettify-symbols-alist
+					'("\\mathbb{E}" . 120124))
+			   (define-abbrev LaTeX-mode-abbrev-table
+			     "\\ex" "\\mathbb{E}" nil)
+			   (define-abbrev LaTeX-mode-abbrev-table
+			     "\\pr" "\\mathbb{P}" nil)
+			   (prettify-symbols-mode t)
+			   (abbrev-mode t)))
 
-(add-hook 'TeX-mode-hook #'prettify-symbols-mode)
 (setq prettify-symbols-unprettify-at-point t)
-;(setq font-latex-fontify-script nil)
-;(setq font-latex-script-display '(nil))
+(setq LaTeX-electric-left-right-brace      t)
+(setq TeX-electric-escape                  nil)
+(setq TeX-electric-math                    '("$" . "$"))
+(setq TeX-electric-sub-and-superscript     t)
+(setq TeX-indent-open-delimiters           "")
+(setq TeX-electric-backslash               t)
 
+;; Text mode settings.
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (add-hook 'text-mode-hook 'text-mode-hook-identify)
 
+;; Appearance.
 (set-face-attribute 'default nil :background "white smoke")
 (set-face-attribute 'cursor nil :background "magenta")
+(blink-cursor-mode 0)
+(tool-bar-mode 0)
 
 ;(global-visual-line-mode 1)
-
-;(add-hook 'TeX-mode-hook
-;	  (lambda ()
-;	    (add-to-list 'tex-prettify-symbols-alist
-;			 '("\\mathbb{E}" . 120124))))
-
-;; (custom-set-variables
-;;  ;; custom-set-variables was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(LaTeX-electric-left-right-brace t)
-;;  '(LaTeX-indent-environment-list
-;;    '(("verbatim" current-indentation) ("verbatim*" current-indentation)
-;;      ("filecontents" current-indentation) ("filecontents*" current-indentation)
-;;      ("tabular" LaTeX-indent-tabular) ("tabular*" LaTeX-indent-tabular)
-;;      ("array" LaTeX-indent-tabular) ("eqnarray" LaTeX-indent-tabular)
-;;      ("eqnarray*" LaTeX-indent-tabular) ("align" LaTeX-indent-tabular)
-;;      ("align*" LaTeX-indent-tabular) ("aligned" LaTeX-indent-tabular)
-;;      ("alignat" LaTeX-indent-tabular) ("alignat*" LaTeX-indent-tabular)
-;;      ("alignedat" LaTeX-indent-tabular) ("xalignat" LaTeX-indent-tabular)
-;;      ("xalignat*" LaTeX-indent-tabular) ("xxalignat" LaTeX-indent-tabular)
-;;      ("flalign" LaTeX-indent-tabular) ("flalign*" LaTeX-indent-tabular)
-;;      ("split" LaTeX-indent-tabular) ("matrix" LaTeX-indent-tabular)
-;;      ("pmatrix" LaTeX-indent-tabular) ("bmatrix" LaTeX-indent-tabular)
-;;      ("Bmatrix" LaTeX-indent-tabular) ("vmatrix" LaTeX-indent-tabular)
-;;      ("Vmatrix" LaTeX-indent-tabular) ("smallmatrix" LaTeX-indent-tabular)
-;;      ("cases" LaTeX-indent-tabular) ("longtable" LaTeX-indent-tabular)
-;;      ("longtable*" LaTeX-indent-tabular) ("matrix*" LaTeX-indent-tabular)
-;;      ("pmatrix*" LaTeX-indent-tabular) ("bmatrix*" LaTeX-indent-tabular)
-;;      ("Bmatrix*" LaTeX-indent-tabular) ("vmatrix*" LaTeX-indent-tabular)
-;;      ("Vmatrix*" LaTeX-indent-tabular) ("smallmatrix*" LaTeX-indent-tabular)
-;;      ("psmallmatrix" LaTeX-indent-tabular) ("psmallmatrix*" LaTeX-indent-tabular)
-;;      ("bsmallmatrix" LaTeX-indent-tabular) ("bsmallmatrix*" LaTeX-indent-tabular)
-;;      ("vsmallmatrix" LaTeX-indent-tabular) ("vsmallmatrix*" LaTeX-indent-tabular)
-;;      ("Vsmallmatrix" LaTeX-indent-tabular) ("Vsmallmatrix*" LaTeX-indent-tabular)
-;;      ("dcases" LaTeX-indent-tabular) ("dcases*" LaTeX-indent-tabular)
-;;      ("rcases" LaTeX-indent-tabular) ("rcases*" LaTeX-indent-tabular)
-;;      ("drcases" LaTeX-indent-tabular) ("drcases*" LaTeX-indent-tabular)
-;;      ("cases*" LaTeX-indent-tabular) ("stabular" LaTeX-indent-tabular)
-;;      ("stabular*" LaTeX-indent-tabular) ("supertabular" LaTeX-indent-tabular)
-;;      ("supertabular*" LaTeX-indent-tabular) ("mpsupertabular" LaTeX-indent-tabular)
-;;      ("mpsupertabular*" LaTeX-indent-tabular) ("tblr" LaTeX-indent-tabular)
-;;      ("longtblr" LaTeX-indent-tabular) ("talltblr" LaTeX-indent-tabular)
-;;      ("booktabs" LaTeX-indent-tabular) ("+array" LaTeX-indent-tabular)
-;;      ("+matrix" LaTeX-indent-tabular) ("+bmatrix" LaTeX-indent-tabular)
-;;      ("+Bmatrix" LaTeX-indent-tabular) ("+pmatrix" LaTeX-indent-tabular)
-;;      ("+vmatrix" LaTeX-indent-tabular) ("+Vmatrix" LaTeX-indent-tabular)
-;;      ("+cases" LaTeX-indent-tabular) ("tabularx" LaTeX-indent-tabular)
-;;      ("tabulary" LaTeX-indent-tabular) ("xltabular" LaTeX-indent-tabular)
-;;      ("xtabular" LaTeX-indent-tabular) ("xtabular*" LaTeX-indent-tabular)
-;;      ("mpxtabular" LaTeX-indent-tabular) ("mpxtabular*" LaTeX-indent-tabular)
-;;      ("displaymath") ("equation") ("picture") ("tabbing") ("gather") ("gather*")
-;;      ("gathered") ("equation*") ("multline") ("multline*") ("macrocode")
-;;      ("macrocode*")))
-;;  '(TeX-electric-escape nil)
-;;  '(TeX-electric-math '("$" . "$"))
-;;  '(TeX-electric-sub-and-superscript t)
-;;  '(TeX-indent-open-delimiters "")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
