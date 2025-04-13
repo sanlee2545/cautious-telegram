@@ -1,6 +1,6 @@
 ;;; Emacs Initialization File.
 
-;;; Packages.
+;; Packages.
 (require 'package)
 
 (setq package-archives
@@ -30,8 +30,6 @@
 (use-package cdlatex)
 (use-package magit)
 (use-package org)
-
-;;; Set some values.
 
 ;; Don't know what this is.
 (org-babel-do-load-languages 'org-babel-load-languages
@@ -64,12 +62,7 @@
 (add-hook 'LaTeX-mode-hook (lambda ()
 			   (add-to-list 'prettify-symbols-alist
 					'("\\mathbb{E}" . 120124))
-			   (define-abbrev LaTeX-mode-abbrev-table
-			     "\\ex" "\\mathbb{E}" nil)
-			   (define-abbrev LaTeX-mode-abbrev-table
-			     "\\pr" "\\mathbb{P}" nil)
-			   (prettify-symbols-mode t)
-			   (abbrev-mode t)))
+			   (prettify-symbols-mode t)))
 
 (setq prettify-symbols-unprettify-at-point t)
 (setq LaTeX-electric-left-right-brace      t)
