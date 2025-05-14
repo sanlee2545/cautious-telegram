@@ -42,9 +42,9 @@
 (setq initial-buffer-choice "~/Documents/")
 
 ;; Frame size.
-(push '(tool-bar-lines . 0) default-frame-alist)
-(push '(height . 48)        default-frame-alist)
-(push '(width . 84)         default-frame-alist)
+(push '(tool-bar-lines . 0)  default-frame-alist)
+(push '(height         . 48) default-frame-alist)
+(push '(width          . 84) default-frame-alist)
 
 ;; Show columns in mode line.
 (column-number-mode t)
@@ -59,10 +59,21 @@
 (set-selection-coding-system 'utf-8)
 
 ;; LaTeX settings.
-(add-hook 'LaTeX-mode-hook (lambda ()
-			   (add-to-list 'prettify-symbols-alist
-					'("\\mathbb{E}" . 120124))
-			   (prettify-symbols-mode t)))
+(add-hook 'LaTeX-mode-hook
+	  (lambda ()
+	    (add-to-list
+	     'prettify-symbols-alist '("\\dots"       . 8230))
+	    (add-to-list
+	     'prettify-symbols-alist '("\\mathbb{C}"  . 8450))
+	    (add-to-list
+	     'prettify-symbols-alist '("\\mathbb{E}"  . 120124))
+	    (add-to-list
+	     'prettify-symbols-alist '("\\mathbb{F}"  . 120125))
+	    (add-to-list
+	     'prettify-symbols-alist '("\\mathbb{M}"  . 120132))
+	    (add-to-list
+	     'prettify-symbols-alist '("\\varnothing" . 8960))
+	    (prettify-symbols-mode t)))
 
 (setq prettify-symbols-unprettify-at-point t)
 (setq LaTeX-electric-left-right-brace      t)
@@ -78,8 +89,8 @@
 
 ;; Appearance.
 (set-face-attribute 'default nil :background "white smoke")
-(set-face-attribute 'cursor nil :background "magenta")
-(blink-cursor-mode 0)
-(tool-bar-mode 0)
+(set-face-attribute 'cursor nil  :background "magenta")
+(blink-cursor-mode  0)
+(tool-bar-mode      0)
 
 ;(global-visual-line-mode 1)
