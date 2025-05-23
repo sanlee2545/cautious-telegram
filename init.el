@@ -22,8 +22,7 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
-(require 'use-package-ensure)
+(eval-when-compile (require 'use-package))
 (setq use-package-always-ensure t)
 
 (use-package auctex)
@@ -31,78 +30,63 @@
 (use-package magit)
 (use-package org)
 
-;; Don't know what this is.
-(org-babel-do-load-languages 'org-babel-load-languages
-			     '((eshell . t) (python . t)))
-
 ;; Dired settings.
 (setq dired-free-space nil)
-(defun my-dired-init () (dired-hide-details-mode 1))
-(add-hook 'dired-mode-hook 'my-dired-init)
 (setq initial-buffer-choice "~/Documents/")
 
-;; Frame size.
-(push '(tool-bar-lines . 0)  default-frame-alist)
-(push '(height         . 48) default-frame-alist)
-(push '(width          . 84) default-frame-alist)
-
-;; Show columns in mode line.
-(column-number-mode t)
+(use-package dired
+  :ensure nil
+  :hook (dired-mode . dired-hide-details-mode)
+  :config
+  )
 
 ;; Set everything to UTF-8.
-(set-language-environment    "UTF-8")
-(setq locale-coding-system   'utf-8)
-(prefer-coding-system        'utf-8)
-(set-default-coding-systems  'utf-8)
-(set-terminal-coding-system  'utf-8)
-(set-keyboard-coding-system  'utf-8)
-(set-selection-coding-system 'utf-8)
+(set-language-environment     "UTF-8")
+(setq locale-coding-system    'utf-8
+      prefer-coding-system    'utf-8
+      default-coding-systems  'utf-8
+      terminal-coding-system  'utf-8
+      keyboard-coding-system  'utf-8
+      selection-coding-system 'utf-8)
 
 ;; LaTeX settings.
-(add-hook 'LaTeX-mode-hook
-	  (lambda ()
-	    (add-to-list
-	     'prettify-symbols-alist '("\\dots"       . 8230))
-	    (add-to-list
-	     'prettify-symbols-alist '("\\mathbb{C}"  . 8450))
-	    (add-to-list
-	     'prettify-symbols-alist '("\\mathbb{E}"  . 120124))
-	    (add-to-list
-	     'prettify-symbols-alist '("\\mathbb{F}"  . 120125))
-	    (add-to-list
-	     'prettify-symbols-alist '("\\mathbb{M}"  . 120132))
-	    (add-to-list
-	     'prettify-symbols-alist '("\\varnothing" . 8960))
-	    (prettify-symbols-mode t)))
-
-(setq prettify-symbols-unprettify-at-point t)
-(setq LaTeX-electric-left-right-brace      t)
-(setq TeX-electric-escape                  nil)
-(setq TeX-electric-math                    '("$" . "$"))
-(setq TeX-electric-sub-and-superscript     t)
-(setq TeX-indent-open-delimiters           "")
-(setq TeX-electric-backslash               t)
+(use-package auctex
+  :config
+  (setq prettify-symbols-unprettify-at-point t)
+  
+  (add-to-list 'prettify-symbols-alist '("\\dots"       . 8230))
+  (add-to-list 'prettify-symbols-alist '("\\mathbb{C}"  . 8450))
+  (add-to-list 'prettify-symbols-alist '("\\mathbb{E}"  . 120124))
+  (add-to-list 'prettify-symbols-alist '("\\mathbb{F}"  . 120125))
+  (add-to-list 'prettify-symbols-alist '("\\mathbb{M}"  . 120132))
+  (add-to-list 'prettify-symbols-alist '("\\varnothing" . 8960))
+  
+  (prettify-symbols-mode t)
+  
+  (setq LaTeX-electric-left-right-brace  t
+	TeX-electric-escape              nil
+	TeX-electric-math                '("$" . "$")
+	TeX-electric-sub-and-superscript t
+	TeX-indent-open-delimiters       ""
+	TeX-electric-backslash           t)
+  )
 
 ;; Text mode settings.
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'text-mode-hook 'text-mode-hook-identify)
+(use-package text-mode
+  :ensure nil
+  :hook (text-mode . turn-on-auto-fill)
+  :config
+  )
 
 ;; Appearance.
-(set-face-attribute 'default nil :background "white smoke")
-(set-face-attribute 'cursor nil  :background "magenta")
+(push '(tool-bar-lines . 0)         default-frame-alist)
+(push '(height         . 48)        default-frame-alist)
+(push '(width          . 80)        default-frame-alist)
+(push '(cursor-color   . "magenta") default-frame-alist)
+
+(add-hook 'after-change-major-mode-hook 'column-number-mode)
 (blink-cursor-mode  0)
+(set-face-attribute 'default nil :background "white smoke")
 (tool-bar-mode      0)
 
-;(global-visual-line-mode 1)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(auctex cdlatex magit)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;;; End.
