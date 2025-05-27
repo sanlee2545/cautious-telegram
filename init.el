@@ -53,15 +53,23 @@
 (use-package auctex
   :config
   (setq prettify-symbols-unprettify-at-point t)
-  
-  (add-to-list 'prettify-symbols-alist '("\\dots"       . 8230))
-  (add-to-list 'prettify-symbols-alist '("\\mathbb{C}"  . 8450))
-  (add-to-list 'prettify-symbols-alist '("\\mathbb{E}"  . 120124))
-  (add-to-list 'prettify-symbols-alist '("\\mathbb{F}"  . 120125))
-  (add-to-list 'prettify-symbols-alist '("\\mathbb{M}"  . 120132))
-  (add-to-list 'prettify-symbols-alist '("\\varnothing" . 8960))
-  
-  (prettify-symbols-mode t)
+
+  (add-hook 'LaTeX-mode-hook
+	    (lambda ()
+	      (add-to-list
+	       'prettify-symbols-alist '("\\dots"       . 8230))
+	      (add-to-list
+	       'prettify-symbols-alist '("\\mathbb{C}"  . 8450))
+	      (add-to-list
+	       'prettify-symbols-alist '("\\mathbb{E}"  . 120124))
+	      (add-to-list
+	       'prettify-symbols-alist '("\\mathbb{F}"  . 120125))
+	      (add-to-list
+	       'prettify-symbols-alist '("\\mathbb{M}"  . 120132))
+	      (add-to-list
+	       'prettify-symbols-alist '("\\varnothing" . 8960))
+    
+	      (prettify-symbols-mode t)))
   
   (setq LaTeX-electric-left-right-brace  t
 	TeX-electric-escape              nil
