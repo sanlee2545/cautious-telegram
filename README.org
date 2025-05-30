@@ -4,5 +4,7 @@
   LaTeX, Python, Org-Mode, and font and cursor colors.
 ** Sources
 - [[https://gemini.google.com/app][Google Gemini]]
+- Hahn, Harley /Emacs Field Guide/
+- Petersen, Mickey /Mastering Emacs/
 - [[https://github.com/SophieBosio/.emacs.d][Sophie Bosio's Emacs Configuration]]
 - [[http://xahlee.info/emacs/][Xah Lee Emacs Tutorials]]

@@ -88,8 +88,8 @@
 
 ;; Appearance.
 (push '(tool-bar-lines . 0)         default-frame-alist)
-(push '(height         . 48)        default-frame-alist)
-(push '(width          . 80)        default-frame-alist)
+(push '(height         . 49)        default-frame-alist)
+(push '(width          . 81)        default-frame-alist)
 (push '(cursor-color   . "magenta") default-frame-alist)
 
 (add-hook 'after-change-major-mode-hook 'column-number-mode)
