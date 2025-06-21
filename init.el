@@ -6,14 +6,12 @@
 (setq package-archives
       '(("GNU ELPA"     . "https://elpa.gnu.org/packages/")
 	("MELPA"        . "https://melpa.org/packages/")
-	("ORG"          . "https://orgmode.org/elpa/")
         ("MELPA Stable" . "https://stable.melpa.org/packages/")
         ("nongnu"       . "https://elpa.nongnu.org/nongnu/"))
       package-archive-priorities
       '(("GNU ELPA"     . 20)
-        ("MELPA"        . 15)
-        ("ORG"          . 10)
-        ("MELPA Stable" . 5)
+        ("MELPA"        . 10)
+        ("MELPA Stable" . 15)
         ("nongnu"       . 0)))
 
 (package-initialize)
@@ -25,29 +23,12 @@
 (eval-when-compile (require 'use-package))
 (setq use-package-always-ensure t)
 
-(use-package auctex)
-(use-package cdlatex)
-(use-package magit)
-(use-package org)
-
 ;; Dired settings.
-(setq dired-free-space nil)
-(setq initial-buffer-choice "~/Documents/")
-
 (use-package dired
   :ensure nil
+  :init (setq initial-buffer-choice "~/books-and-documents/")
   :hook (dired-mode . dired-hide-details-mode)
-  :config
-  )
-
-;; Set everything to UTF-8.
-(set-language-environment     "UTF-8")
-(setq locale-coding-system    'utf-8
-      prefer-coding-system    'utf-8
-      default-coding-systems  'utf-8
-      terminal-coding-system  'utf-8
-      keyboard-coding-system  'utf-8
-      selection-coding-system 'utf-8)
+  :config (setq dired-free-space nil))
 
 ;; LaTeX settings.
 (use-package auctex
@@ -76,15 +57,34 @@
 	TeX-electric-math                '("$" . "$")
 	TeX-electric-sub-and-superscript t
 	TeX-indent-open-delimiters       ""
-	TeX-electric-backslash           t)
-  )
+	TeX-electric-backslash           t))
+
+(use-package cdlatex
+  :after auctex
+  :hook (LaTeX-mode . turn-on-cdlatex))
+
+;; Magit settings.
+(use-package magit
+  :ensure t)
+
+;; Org-Mode settings.
+(use-package org
+  :ensure t)
 
 ;; Text mode settings.
 (use-package text-mode
   :ensure nil
   :hook (text-mode . turn-on-auto-fill)
-  :config
-  )
+  :config (setq fill-column 70))
+
+;; Set everything to UTF-8.
+(set-language-environment     "UTF-8")
+(setq locale-coding-system    'utf-8
+      prefer-coding-system    'utf-8
+      default-coding-systems  'utf-8
+      terminal-coding-system  'utf-8
+      keyboard-coding-system  'utf-8
+      selection-coding-system 'utf-8)
 
 ;; Appearance.
 (push '(tool-bar-lines . 0)         default-frame-alist)
@@ -94,7 +94,11 @@
 
 (add-hook 'after-change-major-mode-hook 'column-number-mode)
 (blink-cursor-mode  0)
-(set-face-attribute 'default nil :background "white smoke")
 (tool-bar-mode      0)
+
+(custom-set-faces
+ '(default   ((t (:background "white smoke"))))
+ '(mode-line ((t (:background "pink" :foreground "black"))))
+ '(menu-bar  ((t (:background "pink" :foreground "black")))))
 
 ;;; End.
