@@ -1,5 +1,8 @@
 ;;; Emacs Initialization File.
 
+;; Set user emacs directory for Windows.
+(setq user-emacs-directory "C:/Users/sanle/AppData/Roaming/.emacs.d/")
+
 ;; Packages.
 (require 'package)
 
@@ -26,7 +29,7 @@
 ;; Dired settings.
 (use-package dired
   :ensure nil
-  :init (setq initial-buffer-choice "~/books-and-documents/")
+  :init (setq initial-buffer-choice "C:/Users/sanle/Documents/")
   :hook (dired-mode . dired-hide-details-mode)
   :config (setq dired-free-space nil))
 
@@ -59,9 +62,9 @@
 	TeX-indent-open-delimiters       ""
 	TeX-electric-backslash           t))
 
-(use-package cdlatex
-  :after auctex
-  :hook (LaTeX-mode . turn-on-cdlatex))
+;(use-package cdlatex
+;  :after auctex
+;  :hook (LaTeX-mode . turn-on-cdlatex))
 
 ;; Magit settings.
 (use-package magit
@@ -97,8 +100,18 @@
 (tool-bar-mode      0)
 
 (custom-set-faces
- '(default   ((t (:background "white smoke"))))
- '(mode-line ((t (:background "pink" :foreground "black"))))
- '(menu-bar  ((t (:background "pink" :foreground "black")))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background "white smoke"))))
+ '(menu-bar ((t (:background "pink" :foreground "black"))))
+ '(mode-line ((t (:background "pink" :foreground "black")))))
 
 ;;; End.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages nil))
