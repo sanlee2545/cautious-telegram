@@ -3,6 +3,17 @@
 ;; Set user emacs directory for Windows.
 (setq user-emacs-directory "C:/Users/sanle/AppData/Roaming/.emacs.d/")
 
+;; Appearance.
+(push '(tool-bar-lines . 0)         default-frame-alist)
+(push '(height         . 49)        default-frame-alist)
+(push '(width          . 81)        default-frame-alist)
+(push '(cursor-color   . "magenta") default-frame-alist)
+
+(add-hook 'after-change-major-mode-hook 'column-number-mode)
+(blink-cursor-mode  0)
+(set-fontset-font t 'mathematical "Segoe UI Symbol")
+(set-frame-font "DejaVu Sans Mono-10" t t)
+
 ;; Packages.
 (require 'package)
 
@@ -29,7 +40,7 @@
 ;; Dired settings.
 (use-package dired
   :ensure nil
-  :init (setq initial-buffer-choice "C:/Users/sanle/Documents/")
+  :init (setq initial-buffer-choice "C:/Users/sanle/OneDrive/Documents/")
   :hook (dired-mode . dired-hide-details-mode)
   :config (setq dired-free-space nil))
 
@@ -89,22 +100,11 @@
       keyboard-coding-system  'utf-8
       selection-coding-system 'utf-8)
 
-;; Appearance.
-(push '(tool-bar-lines . 0)         default-frame-alist)
-(push '(height         . 49)        default-frame-alist)
-(push '(width          . 81)        default-frame-alist)
-(push '(cursor-color   . "magenta") default-frame-alist)
-
-(add-hook 'after-change-major-mode-hook 'column-number-mode)
-(blink-cursor-mode  0)
-(tool-bar-mode      0)
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "white smoke"))))
  '(menu-bar ((t (:background "pink" :foreground "black"))))
  '(mode-line ((t (:background "pink" :foreground "black")))))
 
