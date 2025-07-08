@@ -1,7 +1,7 @@
 ;;; Emacs Initialization File.
 
-;; Set user emacs directory for Windows.
-(setq user-emacs-directory "C:/Users/sanle/AppData/Roaming/.emacs.d/")
+;; Set user emacs directory for Linux.
+;(setq user-emacs-directory "~/.emacs.d/")
 
 ;; Appearance.
 (push '(tool-bar-lines . 0)         default-frame-alist)
@@ -11,8 +11,7 @@
 
 (add-hook 'after-change-major-mode-hook 'column-number-mode)
 (blink-cursor-mode  0)
-(set-fontset-font t 'mathematical "Segoe UI Symbol")
-(set-frame-font "DejaVu Sans Mono-10" t t)
+(set-frame-font "Cousine-10" t t)
 
 ;; Packages.
 (require 'package)
@@ -40,7 +39,7 @@
 ;; Dired settings.
 (use-package dired
   :ensure nil
-  :init (setq initial-buffer-choice "C:/Users/sanle/OneDrive/Documents/")
+  :init (setq initial-buffer-choice "~/Documents/")
   :hook (dired-mode . dired-hide-details-mode)
   :config (setq dired-free-space nil))
 
