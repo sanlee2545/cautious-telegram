@@ -10,7 +10,10 @@
 (push '(cursor-color   . "magenta") default-frame-alist)
 
 (add-hook 'after-change-major-mode-hook 'column-number-mode)
+
 (blink-cursor-mode  0)
+(scroll-bar-mode    0)
+
 (set-frame-font "Cousine-10" t t)
 
 ;; Packages.
