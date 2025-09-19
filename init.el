@@ -1,8 +1,5 @@
 ;;; Emacs Initialization File.
 
-;; Set user emacs directory for Linux.
-;(setq user-emacs-directory "~/.emacs.d/")
-
 ;; Appearance.
 (push '(tool-bar-lines . 0)         default-frame-alist)
 (push '(height         . 49)        default-frame-alist)
@@ -39,14 +36,14 @@
 (eval-when-compile (require 'use-package))
 (setq use-package-always-ensure t)
 
-;; Dired settings.
+; Dired settings.
 (use-package dired
   :ensure nil
   :init (setq initial-buffer-choice "~/Documents/")
   :hook (dired-mode . dired-hide-details-mode)
   :config (setq dired-free-space nil))
 
-;; LaTeX settings.
+; LaTeX settings.
 (use-package auctex
   :config
   (setq prettify-symbols-unprettify-at-point t)
@@ -75,19 +72,15 @@
 	TeX-indent-open-delimiters       ""
 	TeX-electric-backslash           t))
 
-;(use-package cdlatex
-;  :after auctex
-;  :hook (LaTeX-mode . turn-on-cdlatex))
-
-;; Magit settings.
+; Magit settings.
 (use-package magit
   :ensure t)
 
-;; Org-Mode settings.
+; Org-Mode settings.
 (use-package org
   :ensure t)
 
-;; Text mode settings.
+; Text mode settings.
 (use-package text-mode
   :ensure nil
   :hook (text-mode . turn-on-auto-fill)
