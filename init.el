@@ -36,14 +36,7 @@
 (eval-when-compile (require 'use-package))
 (setq use-package-always-ensure t)
 
-; Dired settings.
-(use-package dired
-  :ensure nil
-  :init (setq initial-buffer-choice "~/Documents/")
-  :hook (dired-mode . dired-hide-details-mode)
-  :config (setq dired-free-space nil))
-
-; LaTeX settings.
+; AucTeX settings.
 (use-package auctex
   :config
   (setq prettify-symbols-unprettify-at-point t)
@@ -71,6 +64,13 @@
 	TeX-electric-sub-and-superscript t
 	TeX-indent-open-delimiters       ""
 	TeX-electric-backslash           t))
+
+; Dired settings.
+(use-package dired
+  :ensure nil
+  :init (setq initial-buffer-choice "~/Documents/")
+  :hook (dired-mode . dired-hide-details-mode)
+  :config (setq dired-free-space nil))
 
 ; Magit settings.
 (use-package magit
