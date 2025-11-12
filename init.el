@@ -86,6 +86,17 @@
   :hook (text-mode . turn-on-auto-fill)
   :config (setq fill-column 70))
 
+;; Programming mode settings.
+(add-hook 'c-mode-hook
+	  (lambda ()
+	    (c-set-style "bsd")
+	    (setq c-basic-offset 4)))
+
+(add-hook 'c++-mode-hook
+	  (lambda ()
+	    (c-set-style "bsd")
+	    (setq c-basic-offset 4)))
+
 ;; Set everything to UTF-8.
 (set-language-environment     "UTF-8")
 (setq locale-coding-system    'utf-8
