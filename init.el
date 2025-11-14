@@ -40,6 +40,7 @@
 (use-package auctex
   :config
   (setq prettify-symbols-unprettify-at-point t)
+  (setq TeX-view-program-selection '((output-pdf "Okular")))
 
   (add-hook 'LaTeX-mode-hook
 	    (lambda ()
