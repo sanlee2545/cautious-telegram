@@ -9,6 +9,7 @@
 (add-hook 'after-change-major-mode-hook 'column-number-mode)
 
 (blink-cursor-mode  0)
+(global-visual-line-mode t)
 (scroll-bar-mode    0)
 
 (set-frame-font "Cousine-10" t t)
