@@ -37,7 +37,6 @@
 (eval-when-compile (require 'use-package))
 (setq use-package-always-ensure t)
 
-; AucTeX settings.
 (use-package auctex
   :config
   (setq prettify-symbols-unprettify-at-point t)
@@ -67,22 +66,18 @@
 	TeX-indent-open-delimiters       ""
 	TeX-electric-backslash           t))
 
-; Dired settings.
 (use-package dired
   :ensure nil
   :init (setq initial-buffer-choice "~/Documents/")
   :hook (dired-mode . dired-hide-details-mode)
   :config (setq dired-free-space nil))
 
-; Magit settings.
 (use-package magit
   :ensure t)
 
-; Org-Mode settings.
 (use-package org
   :ensure t)
 
-; Text mode settings.
 (use-package text-mode
   :ensure nil
   :hook (text-mode . turn-on-auto-fill)
