@@ -72,6 +72,27 @@
   :hook (dired-mode . dired-hide-details-mode)
   :config (setq dired-free-space nil))
 
+(use-package emms
+  :ensure t
+  :config
+  (require 'emms-setup)
+  (emms-all)
+  (setq emms-player-list '(emms-player-mpv))
+  (setq emms-source-file-default-directory "~/Music/")
+  (setq emms-playlist-default-major-mode 'emms-playlist-mode)
+  (setq emms-mode-line-mode-line-function
+	'emms-mode-line-playlist-current)
+  (setq emms-track-description-function 'emms-info-track-description)
+  (defun my/emms-start-and-open ()
+    (interactive)
+    (emms)
+    (emms-add-directory emms-source-file-default-directory)
+    (emms-playlist-mode-go)
+    (message "EMMS ready! Tracks loaded from %s"
+	     emms-source-file-default-directory)
+    (emms-mode-line 1)
+    (message "EMMS configuration loaded successfully.")))
+
 (use-package magit
   :ensure t)
 
