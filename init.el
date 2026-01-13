@@ -5,7 +5,8 @@
       '((tool-bar-lines . 0)
 	(height         . 49)
 	(width          . 81)
-	(cursor-color   . "magenta")))
+	(cursor-color   . "magenta")
+	(cursor-type    . box)))
 
 (add-hook 'after-change-major-mode-hook 'column-number-mode)
 (blink-cursor-mode              0)
@@ -100,7 +101,6 @@
  '(menu-bar ((t (:background "pink" :foreground "black"))))
  '(mode-line ((t (:background "pink" :foreground "black")))))
 
-;;; End.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
