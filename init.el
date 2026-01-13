@@ -1,18 +1,18 @@
 ;;; Emacs Initialization File.
 
 ;; Appearance.
-(push '(tool-bar-lines . 0)         default-frame-alist)
-(push '(height         . 49)        default-frame-alist)
-(push '(width          . 81)        default-frame-alist)
-(push '(cursor-color   . "magenta") default-frame-alist)
+(setq default-frame-alist
+      '((tool-bar-lines . 0)
+	(height         . 49)
+	(width          . 81)
+	(cursor-color   . "magenta")))
 
 (add-hook 'after-change-major-mode-hook 'column-number-mode)
-
-(blink-cursor-mode  0)
-(global-visual-line-mode t)
-(scroll-bar-mode    0)
-
+(blink-cursor-mode              0)
+(global-visual-line-mode        t)
+(scroll-bar-mode                0)
 (set-frame-font "Cousine-10" t t)
+(setq mouse-wheel-scroll-amount '(2))
 
 ;; Packages.
 (require 'package)
@@ -72,27 +72,6 @@
   :hook (dired-mode . dired-hide-details-mode)
   :config (setq dired-free-space nil))
 
-(use-package emms
-  :ensure t
-  :config
-  (require 'emms-setup)
-  (emms-all)
-  (setq emms-player-list '(emms-player-mpv))
-  (setq emms-source-file-default-directory "~/Music/")
-  (setq emms-playlist-default-major-mode 'emms-playlist-mode)
-  (setq emms-mode-line-mode-line-function
-	'emms-mode-line-playlist-current)
-  (setq emms-track-description-function 'emms-info-track-description)
-  (defun my/emms-start-and-open ()
-    (interactive)
-    (emms)
-    (emms-add-directory emms-source-file-default-directory)
-    (emms-playlist-mode-go)
-    (message "EMMS ready! Tracks loaded from %s"
-	     emms-source-file-default-directory)
-    (emms-mode-line 1)
-    (message "EMMS configuration loaded successfully.")))
-
 (use-package magit
   :ensure t)
 
@@ -103,17 +82,6 @@
   :ensure nil
   :hook (text-mode . turn-on-auto-fill)
   :config (setq fill-column 70))
-
-;; Programming mode settings.
-(add-hook 'c-mode-hook
-	  (lambda ()
-	    (c-set-style "bsd")
-	    (setq c-basic-offset 4)))
-
-(add-hook 'c++-mode-hook
-	  (lambda ()
-	    (c-set-style "bsd")
-	    (setq c-basic-offset 4)))
 
 ;; Set everything to UTF-8.
 (set-language-environment     "UTF-8")
