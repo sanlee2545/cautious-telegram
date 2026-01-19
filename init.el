@@ -8,12 +8,25 @@
 	(cursor-color   . "magenta")
 	(cursor-type    . box)))
 
-(add-hook 'after-change-major-mode-hook 'column-number-mode)
+(add-hook                       'after-change-major-mode-hook
+				'column-number-mode)
 (blink-cursor-mode              0)
-(global-visual-line-mode        t)
+(global-visual-line-mode        1)
+(menu-bar-mode                  0)
 (scroll-bar-mode                0)
-(set-frame-font "Cousine-10" t t)
+(set-background-color           "WhiteSmoke")
+(set-foreground-color           "gray5")
+(set-frame-font                 "Cousine-10" t t)
 (setq mouse-wheel-scroll-amount '(2))
+(tool-bar-mode                  0)
+
+(set-face-attribute 'mode-line nil
+		    :background "pink"
+		    :foreground "black"
+		    :box nil)
+
+(set-face-attribute 'region nil
+		    :background "pink")
 
 ;; Packages.
 (require 'package)
@@ -98,8 +111,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(menu-bar ((t (:background "pink" :foreground "black"))))
- '(mode-line ((t (:background "pink" :foreground "black")))))
+ )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -107,3 +119,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages nil))
+
+(run-with-timer 0.2 nil (lambda () (set-cursor-color "magenta")))
