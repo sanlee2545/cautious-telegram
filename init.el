@@ -17,7 +17,7 @@
 (set-background-color           "WhiteSmoke")
 (set-foreground-color           "gray5")
 (set-frame-font                 "Cousine-10" t t)
-(setq mouse-wheel-scroll-amount '(2))
+(setq mouse-wheel-scroll-amount '(4))
 (tool-bar-mode                  0)
 
 (set-face-attribute 'mode-line nil
