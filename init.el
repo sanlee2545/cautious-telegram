@@ -3,8 +3,8 @@
 ;; Appearance.
 (setq default-frame-alist
       '((tool-bar-lines . 0)
-	(height         . 49)
-	(width          . 81)
+	(height         . 52)
+	(width          . 84)
 	(cursor-color   . "magenta")
 	(cursor-type    . box)))
 
@@ -120,4 +120,5 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages nil))
 
+(run-with-timer 0.2 nil (lambda () (set-cursor-color "magenta")))
 (run-with-timer 0.2 nil (lambda () (set-cursor-color "magenta")))
