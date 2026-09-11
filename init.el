@@ -3,8 +3,8 @@
 ;; Appearance.
 (setq default-frame-alist
       '((tool-bar-lines . 0)
-	(height         . 52)
-	(width          . 84)
+	(height         . 49)
+	(width          . 81)
 	(cursor-color   . "magenta")
 	(cursor-type    . box)))
 
