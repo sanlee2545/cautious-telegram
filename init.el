@@ -28,6 +28,9 @@
 (set-face-attribute 'region nil
 		    :background "pink")
 
+(setq c-default-style "k&r"
+      c-basic-offset 2)
+
 ;; Packages.
 (require 'package)
 
