@@ -123,5 +123,6 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages nil))
 
-(run-with-timer 0.2 nil (lambda () (set-cursor-color "magenta")))
-(run-with-timer 0.2 nil (lambda () (set-cursor-color "magenta")))
+(run-with-timer 0.5 nil (lambda () (set-cursor-color "magenta")))
+(run-with-timer 0.5 nil (lambda () (set-cursor-color "magenta")))
+(run-with-timer 0.5 nil (lambda () (set-cursor-color "magenta")))
