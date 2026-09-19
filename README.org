@@ -1,6 +1,18 @@
-* Emacs Initialization File
-** Repository Contents
-- ~init.el~ : Initialization file for Emacs. Has some options for
-  LaTeX, Python, Org-Mode, and font and cursor colors.
-** Sources
-- [[https://chat.deepseek.com/][Deepseek]]
+* INFORMATION
+** TITLE
+
+~README.org~
+
+** AUTHORS
+
+SAN LEE
+
+** CONTENTS
+
+FILES:
+- ~README.org~
+- ~init.el~
+  
+** SOURCES
+
+- [[https://chat.deepseek.com/][DEEPSEEK]]
