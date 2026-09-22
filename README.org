@@ -10,8 +10,8 @@ SAN LEE
 ** CONTENTS
 
 FILES:
-- ~README.org~
 - ~init.el~
+- ~README.org~
   
 ** SOURCES
 

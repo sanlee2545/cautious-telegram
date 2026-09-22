@@ -25,11 +25,7 @@
 		    :foreground "black"
 		    :box nil)
 
-(set-face-attribute 'region nil
-		    :background "pink")
-
-(setq c-default-style "k&r"
-      c-basic-offset 2)
+(set-face-attribute 'region nil :background "pink")
 
 ;; Packages.
 (require 'package)
@@ -89,11 +85,9 @@
   :hook (dired-mode . dired-hide-details-mode)
   :config (setq dired-free-space nil))
 
-(use-package magit
-  :ensure t)
+(use-package magit :ensure t)
 
-(use-package org
-  :ensure t)
+(use-package org :ensure t)
 
 (use-package text-mode
   :ensure nil
