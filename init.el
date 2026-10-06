@@ -1,24 +1,23 @@
-;;; Emacs Initialization File.
+;;; Emacs Initialization File. --- -*- lexical-binding: t; -*-
 
 ;; Appearance.
 (setq default-frame-alist
-      '((tool-bar-lines . 0)
-	(height         . 49)
+      '((height         . 49)
 	(width          . 81)
 	(cursor-color   . "magenta")
 	(cursor-type    . box)))
 
-(add-hook                       'after-change-major-mode-hook
-				'column-number-mode)
-(blink-cursor-mode              0)
-(global-visual-line-mode        1)
-(menu-bar-mode                  0)
-(scroll-bar-mode                0)
-(set-background-color           "WhiteSmoke")
-(set-foreground-color           "gray5")
-(set-frame-font                 "Cousine-10" t t)
+(blink-cursor-mode       0)
+(column-number-mode      1)
+(global-visual-line-mode 1)
+(menu-bar-mode           0)
+(scroll-bar-mode         0)
+(tool-bar-mode           0)
+
+(set-background-color    "WhiteSmoke")
+(set-foreground-color    "gray5")
+(set-frame-font          "Cousine-10" t t)
 (setq mouse-wheel-scroll-amount '(4))
-(tool-bar-mode                  0)
 
 (set-face-attribute 'mode-line nil
 		    :background "pink"
@@ -85,9 +84,9 @@
   :hook (dired-mode . dired-hide-details-mode)
   :config (setq dired-free-space nil))
 
-(use-package magit :ensure t)
+(use-package magit)
 
-(use-package org :ensure t)
+(use-package org :ensure nil)
 
 (use-package text-mode
   :ensure nil
@@ -103,20 +102,9 @@
       keyboard-coding-system  'utf-8
       selection-coding-system 'utf-8)
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(custom-set-faces)
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(package-selected-packages nil))
 
-(run-with-timer 0.5 nil (lambda () (set-cursor-color "magenta")))
-(run-with-timer 0.5 nil (lambda () (set-cursor-color "magenta")))
 (run-with-timer 0.5 nil (lambda () (set-cursor-color "magenta")))
