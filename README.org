@@ -16,3 +16,4 @@ FILES:
 ** SOURCES
 
 - [[https://chat.deepseek.com/][DEEPSEEK]]
+- [[https://gemini.google.com/app][GEMINI]]

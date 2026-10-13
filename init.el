@@ -7,6 +7,8 @@
 	(cursor-color   . "magenta")
 	(cursor-type    . box)))
 
+(setq-default fill-column 70)
+
 (blink-cursor-mode       0)
 (column-number-mode      1)
 (global-visual-line-mode 1)
@@ -17,7 +19,7 @@
 (set-background-color    "WhiteSmoke")
 (set-foreground-color    "gray5")
 (set-frame-font          "Cousine-10" t t)
-(setq mouse-wheel-scroll-amount '(4))
+(setq mouse-wheel-scroll-amount '(10))
 
 (set-face-attribute 'mode-line nil
 		    :background "pink"
@@ -102,9 +104,18 @@
       keyboard-coding-system  'utf-8
       selection-coding-system 'utf-8)
 
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(package-selected-packages nil))
 
 (run-with-timer 0.5 nil (lambda () (set-cursor-color "magenta")))
